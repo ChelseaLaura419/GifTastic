@@ -1,0 +1,16 @@
+body {
+    background-image: url(../images/qbkls.png);
+}
+
+.btn-primary {
+    margin: 10px;
+}
+
+.btn-success {
+    margin: 10px;
+}
+
+#queen-form {
+    margin: 10px;
+
+}

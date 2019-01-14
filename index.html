@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Drag Queen Buttons</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rupaul's Giphy Race</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-  <button data-queen="rupaul">RuPaul</button>
-  <button data-queen="alaska thunderfuck">Alaska</button>
-  <button data-queen="jinkx monsoon">Jinkx Monsoon</button>
-  <button data-queen="adore delano">Adore Delano</button>
-  <button data-queen="tatianna">Tatianna</button>
-  <button data-queen="alyssa edwards">Alyssa Edwards</button>
-  <button data-queen="roxxxy andrews">Roxxxy Andrews</button>
-  <button data-queen="shangela">Shangela</button>
-  <button data-queen="bob the drag queen">Bob the Drag Queen</button>
-  <div id="gifs-appear-here">
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="assets/javascript/giphy.js"></script>
+    <img src="assets/images/rubanner.jpg" width="100%">
+    <div class="container">
+        <h3 class="text-center">Click on a queen or add your own! When the gifs pop up click one to play.</h3>
+        <div id="queen-buttons"> </div>
+        <div class="container" id="btn" style="background: transparent;">
+            <form id="queen-form">
+                <label id="add" for="queen-input">Category Is: Favortie Drag Queen</label>
+                <input type="text" class="form-control" id="queen-input">
+            </form>
+            <button onclick="submitButtonClicked()" type="button" id="add-queen" class="btn btn-success">Let's Get Giphy!</button>
+            <div id="queens"> </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/giphy.js"></script>
 </body>
 
 </html>

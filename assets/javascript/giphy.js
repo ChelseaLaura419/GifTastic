@@ -1,50 +1,55 @@
-    // Event listener for all button elements
-    $("button").on("click", function() {
-      // In this case, the "this" keyword refers to the button that was clicked
-      var queen = $(this).attr("data-queen");
+var queensArray = ["RuPaul", "Adore Delano","Bianca Del Rio", "Tatianna", "Bob the Drag Queen", "Alyssa Edwards", "Shangela", "Roxxxy Andrews", "Kim Chi"];
 
-      // Constructing a URL to search Giphy for the name of the queen who said the quote
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        queen + "&api_key=dc6zaTOxFJmzC&limit=10";
+$(document).ready(function() {
+    for (var i = 0; i < queensArray.length; i++) {
+        $("#queen-buttons").append("<button type='button' onclick='searchGif(\"" + queensArray[i] + "\")' class='btn btn-primary' value=' " + queensArray[i] + "'> " + queensArray[i] + " </button>");
+    }
+});
 
-      // Performing our AJAX GET request
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // After the data comes back from the API
-        .then(function(response) {
-          // Storing an array of results in the results variable
-          var results = response.data;
+function queenButtonClicked() {
+    var userInput = $('#queen-input').val();
+    searchGif(userInput);
+}
 
-          // Looping over every result item
-          for (var i = 0; i < results.length; i++) {
+function submitButtonClicked() {
+    var userInput = $('#queen-input').val();
 
-            // Only taking action if the photo has an appropriate rating
-            if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-              // Creating a div for the gif
-              var gifDiv = $("<div>");
+    if (userInput) {
+        $('#queen-buttons').append("<button type='button' onclick='searchGif(\"" + userInput + "\")' class='btn btn-primary' value=' " + userInput + "'> " + userInput + " </button>");
+    }
+}
 
-              // Storing the result item's rating
-              var rating = results[i].rating;
+function searchGif(gifName) {
+    $.ajax({
+            url: "https://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=dc6zaTOxFJmzC&limit=12",
+            type: "GET",
+        })
+        .done(function(response) {
+            displayGif(response);
+        })
+}
 
-              // Creating a paragraph tag with the result item's rating
-              var p = $("<p>").text("Rating: " + rating);
+function displayGif(response) {
+    $('#queens').empty();
+    for (var i = 0; i < response.data.length; i++) {
+        var rating = "<div class='ratings'> Rating:  " + (response.data[i].rating) + " </div>";
+        var image = rating + '<img src= " ' + response.data[i].images.fixed_height_still.url +
+            '" data-still=" ' + response.data[i].images.fixed_height_still.url +
+            ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="movImage" style= "width:350px; height:250px">';
 
-              // Creating an image tag
-              var queenImage = $("<img>");
+        image = '<div class="col-md-4">' + image + "</div>";
+        $('#queens').append(image);
+    }
 
-              // Giving the image tag an src attribute of a proprty pulled off the
-              // result item
-              queenImage.attr("src", results[i].images.fixed_height.url);
+    $('.movImage').on('click', function() {
+        var state = $(this).attr('data-state');
+        if (state == 'still') {
+            $(this).attr('src', $(this).attr("data-animate"));
+            $(this).attr('data-state', 'animate');
+        } else {
+            $(this).attr('src', $(this).attr("data-still"));
+            $(this).attr('data-state', 'still');
+        }
 
-              // Appending the paragraph and queenImage we created to the "gifDiv" div we created
-              gifDiv.append(p);
-              gifDiv.append(queenImage);
-
-              // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-              $("#gifs-appear-here").prepend(gifDiv);
-            }
-          }
-        });
     });
+}
