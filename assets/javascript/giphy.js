@@ -21,7 +21,7 @@ function submitButtonClicked() {
 
 function searchGif(gifName) {
     $.ajax({
-            url: "https://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=dc6zaTOxFJmzC&limit=12",
+            url: "https://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=dc6zaTOxFJmzC&limit=10",
             type: "GET",
         })
         .done(function(response) {
@@ -35,9 +35,9 @@ function displayGif(response) {
         var rating = "<div class='ratings'> Rating:  " + (response.data[i].rating) + " </div>";
         var image = rating + '<img src= " ' + response.data[i].images.fixed_height_still.url +
             '" data-still=" ' + response.data[i].images.fixed_height_still.url +
-            ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="movImage" style= "width:350px; height:250px">';
+            ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="movImage" style= "width:450px; height:250px">';
 
-        image = '<div class="col-md-4">' + image + "</div>";
+        image = '<div class="col-md-5">' + image + "</div>";
         $('#queens').append(image);
     }
 

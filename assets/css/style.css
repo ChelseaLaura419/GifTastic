@@ -4,6 +4,7 @@ body {
 
 .btn-primary {
     margin-right: 7px;
+    margin-top: 7px;
 }
 
 #queen-form {
@@ -14,4 +15,11 @@ body {
 .btn-info {
     margin-bottom: 20px;
 
+}
+
+.ratings {
+    font-weight: bold;
+    color: #2e6da4;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
