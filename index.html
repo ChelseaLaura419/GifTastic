@@ -13,16 +13,14 @@
 <body>
     <img src="assets/images/rubanner.jpg" width="100%">
     <div class="container">
-        <h3 class="text-center">Click on a queen or add your own! When the gifs pop up click one to play.</h3>
+        <h3 class="text-center">Click on a drag queen or add your own! Then click the gifs to turn them on and off.</h3>
         <div id="queen-buttons"> </div>
-        <div class="container" id="btn" style="background: transparent;">
             <form id="queen-form">
                 <label id="add" for="queen-input">Category Is: Favortie Drag Queen</label>
                 <input type="text" class="form-control" id="queen-input">
             </form>
-            <button onclick="submitButtonClicked()" type="button" id="add-queen" class="btn btn-success">Let's Get Giphy!</button>
+            <button onclick="submitButtonClicked()" type="button" id="add-queen" class="btn btn-info">Let's Get Giphy!</button>
             <div id="queens"> </div>
-        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/giphy.js"></script>

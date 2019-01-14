@@ -1,4 +1,4 @@
-var queensArray = ["RuPaul", "Adore Delano","Bianca Del Rio", "Tatianna", "Bob the Drag Queen", "Alyssa Edwards", "Shangela", "Roxxxy Andrews", "Kim Chi"];
+var queensArray = ["RuPaul", "Adore Delano","Bianca Del Rio", "Tatianna", "Bob the Drag Queen", "Alyssa Edwards", "Shangela", "Roxxxy Andrews", "Monet X Change"];
 
 $(document).ready(function() {
     for (var i = 0; i < queensArray.length; i++) {
